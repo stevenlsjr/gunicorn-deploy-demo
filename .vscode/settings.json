@@ -1,0 +1,4 @@
+{
+  "python.pythonPath": "/home/steve/.local/share/virtualenvs/gunicorn-deploy-demo-C3K76WPG/bin/python",
+  "python.formatting.provider": "yapf"
+}
