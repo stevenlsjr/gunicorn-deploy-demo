@@ -8,7 +8,7 @@ logger = logging.getLogger(__name__)
 def index():
     return jsonify({
         'routes': [
-            {"comments": request.host_url + 'api/v1/comments/'}
+            {"polls": request.host_url + 'api/v1/polls/'}
         ]
     })
 
