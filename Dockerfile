@@ -5,8 +5,13 @@ RUN groupadd -g 1000 python && \
   -u 1000 -g 1000 python && \
   chown python:python /app/
 ADD --chown=python:python ./Pipfile ./Pipfile.lock /app/
-RUN pip install pipenv && \
-    pipenv install --system --deploy
+RUN apt update && \
+    apt install -y \
+      build-essential \
+      libpq-dev  && \
+    pip install pipenv
+RUN pipenv install --system --deploy && \
+    apt remove build-essential -y
 
 ADD --chown=python:python ./ /app/
 USER python

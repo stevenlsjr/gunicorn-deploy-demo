@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "gunicorn-demo.fullname" . }}-test-connection"
+  labels:
+    {{- include "gunicorn-demo.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "gunicorn-demo.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never

@@ -1,0 +1,15 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: {{ include "gunicorn-demo.configMapName" . }}
+data:
+  gunicorn.config.py: |-
+    import os
+    import signal
+
+    bind = os.getenv('GUNICORN_HOST', "0.0.0.0") + ":" + os.getenv("GUNICORN_PORT", "8888")
+    errorlog = "-"
+    workers = 2
+    timeout = 30
+    keepalive = 5
+    preload_app = True

@@ -6,10 +6,10 @@ name = "pypi"
 [packages]
 gunicorn = "*"
 uvicorn = "*"
-gevent = "*"
+eventlet = "*"
 flask = "*"
 quart = "*"
-psycopg2-binary = "*"
+psycopg2 = "*"
 
 [dev-packages]
 yapf = "*"
